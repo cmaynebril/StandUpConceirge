@@ -1,0 +1,160 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
+/*addedddddd*/
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+}
+
+    /* Style the buttons inside the tab */
+    .tab button {
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+        background: none;
+    }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background: #dfdef4;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            border-bottom: 3px solid #49a5bf;
+        }
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+    border-radius: 5px;
+}
+
+h4 {
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    background: rgba(73,165,191,1);
+    background: -moz-linear-gradient(left, rgba(73,165,191,1) 0%, rgba(117,189,209,1) 58%, rgba(117,189,209,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(73,165,191,1)), color-stop(58%, rgba(117,189,209,1)), color-stop(100%, rgba(117,189,209,1)));
+    background: -webkit-linear-gradient(left, rgba(73,165,191,1) 0%, rgba(117,189,209,1) 58%, rgba(117,189,209,1) 100%);
+    background: -o-linear-gradient(left, rgba(73,165,191,1) 0%, rgba(117,189,209,1) 58%, rgba(117,189,209,1) 100%);
+    background: -ms-linear-gradient(left, rgba(73,165,191,1) 0%, rgba(117,189,209,1) 58%, rgba(117,189,209,1) 100%);
+    background: linear-gradient(to right, rgba(73,165,191,1) 0%, rgba(117,189,209,1) 58%, rgba(117,189,209,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49a5bf', endColorstr='#75bdd1', GradientType=1 );
+}
+
+.form-check-input {
+    height: 20px;
+    width: 20px;
+}
+
+    .form-check-input:checked {
+        background-color: 3px solid #49a5bf;
+    }
+
+.form-check-label {
+    font-size: large;
+}
+
+.wrapper {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.17);
+    -moz-box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.17);
+    box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.17);
+}
+
+.QuestionWrapper {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.17);
+    -moz-box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.17);
+    box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.17);
+}
+
+.tabcontent {
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#defaultOpen.active {
+    border-bottom: 3px solid #49a5bf;
+}

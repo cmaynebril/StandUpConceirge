@@ -1,0 +1,147 @@
+﻿@model IEnumerable<WebApplication1.Models.DB.BotSchedule>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+
+    <div class="tab">
+        <button class="tablinks" onclick="tab(event, 'Scheduling')">Scheduling</button>
+        <button class="tablinks" onclick="tab(event, 'RR')">Respondents & Requests</button>
+        <button class="tablinks" onclick="tab(event, 'RD')">Results Delivery</button>
+    </div>
+    <form asp-action="Create">
+        <div id="Scheduling" class="tabcontent">
+            <br>
+            <h4>Start Day <span style="float:right;"><i class="far fa-calendar-alt"></i></span></h4>
+
+            <div class="wrapper">
+                <div class="row">
+                    <div class="col-3">
+                        <input id="datepicker" />
+                    </div>
+                    <div class="col-9">
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <hr />
+
+            <h4>Schedule <span style="float:right;"><i class="far fa-clock"></i></span></h4>
+
+            <div class="wrapper">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-3">
+                                <input id="timepicker" />
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                    <label class="form-check-label" for="inlineCheckbox1">Sun</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                    <label class="form-check-label" for="inlineCheckbox2">Mon</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                    <label class="form-check-label" for="inlineCheckbox1">Tue</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                    <label class="form-check-label" for="inlineCheckbox2">Wed</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                    <label class="form-check-label" for="inlineCheckbox1">Thu</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                    <label class="form-check-label" for="inlineCheckbox2">Fri</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                    <label class="form-check-label" for="inlineCheckbox2">Sat</label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <select class="custom-select">
+                                    <option value="weekly">Every Week</option>
+                                    <option value="monthly">Every Month</option>
+                                    <option value="yearly">Every Year</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="text-right">
+                <button type="submit" value="Create" class="btn btn-outline-secondary">Proceed</button>
+            </div>
+        </div>
+    </form>
+
+        <br />
+        <div id="RR" class="tabcontent">
+            <h4>Respondents</h4>
+            <p>Paris is the capital of France.</p>
+
+            <hr />
+
+            <h4>Welcome Message</h4>
+            <textarea readonly class="form-control">
+        At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
+        </textarea>
+
+            <hr />
+
+            <h4>Questions</h4>
+
+            <div class="wrapper">
+                <p>Kamusta?</p>
+                <textarea class="form-control"></textarea>
+            </div>
+
+
+        </div>
+
+        <div id="RD" class="tabcontent">
+
+        </div>
+
+        <script>
+            function tab(evt, tabName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+        </script>
+
+        <script>
+            $('#datepicker').datepicker();
+            $('#timepicker').timepicker();
+        </script>
+
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT'
+                });
+            });
+        </script>
+
+</body>
