@@ -187,22 +187,31 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 BotSchedule sched = new BotSchedule();
+                sched.Id = ScheduleViewModel.ID;
                 sched.StartDay = ScheduleViewModel.StartDay;
                 sched.TimeOccur = ScheduleViewModel.TimeOccur;
                 sched.DayOccur = ScheduleViewModel.DayOccur;
                 sched.FrequencyOccur = ScheduleViewModel.FrequencyOccur;
                 sched.Respondents = ScheduleViewModel.Respondents;
 
+                sched.WelcomeMsg = ScheduleViewModel.WelcomeMsg;
+
+
                 _context.Add(sched);
 
-                BotQuestions quest = new BotQuestions();
-                quest.Question = ScheduleViewModel.Question;
+                var SurveyId = _context.BotSchedule.ToList().LastOrDefault();
 
+                for (int i = 0; i < ScheduleViewModel.Question.Length; i++)
+                {
+                    BotQuestions quest = new BotQuestions();
+                    quest.BotScheduleId = sched.Id;
+                    quest.Question = ScheduleViewModel.Question[i];
+                    _context.Add(quest);
+                    await _context.SaveChangesAsync();
+                }
 
-                _context.Add(quest);
-
-                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Scheduling));
             }
             return View(ScheduleViewModel);
