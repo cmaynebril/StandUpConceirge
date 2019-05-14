@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace StandUpConceirge.Models.DB
+namespace StandUpConceirge.DB.Models
 {
     public partial class botContext : DbContext
     {

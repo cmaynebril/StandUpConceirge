@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication1.Models
+namespace StandUpConceirge.Models
 {
     public class ScheduleViewModel
     {
         public int ID { get; set; }
+        [Required]
         public DateTime? StartDay { get; set; }
+        [Required]
         public TimeSpan? TimeOccur { get; set; }
         public bool Sunday { get; set; }
         public bool Monday { get; set; }
@@ -17,10 +20,14 @@ namespace WebApplication1.Models
         public bool Thursday { get; set; }
         public bool Friday { get; set; }
         public bool Saturday { get; set; }
+        [Required]
         public string FrequencyOccur { get; set; }
+
         public string Respondents { get; set; }
+        [Required]
         public string WelcomeMsg { get; set; }
-        public string Question { get; set; }
+        [Required]
+        public string[] Question { get; set; }
 
 
         public string DayOccur

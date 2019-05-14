@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StandUpConceirge.Models.DB
+namespace StandUpConceirge.DB.Models
 {
     public partial class BotAnswers
     {

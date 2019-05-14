@@ -3,8 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication1.Models.DB;
+using StandUpConceirge.Models.DB;
 
 namespace WebApplication1.Migrations
 {
@@ -81,6 +80,9 @@ namespace WebApplication1.Migrations
                         .HasColumnType("date");
 
                     b.Property<TimeSpan?>("TimeOccur");
+
+                    b.Property<string>("WelcomeMsg")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

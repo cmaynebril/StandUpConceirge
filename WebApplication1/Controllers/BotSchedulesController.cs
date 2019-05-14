@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Models;
-using WebApplication1.Models.DB;
+using StandUpConceirge.Models.DB;
+using StandUpConceirge.Models;
 
 namespace WebApplication1.Controllers
 {
