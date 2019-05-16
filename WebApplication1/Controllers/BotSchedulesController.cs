@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StandUpConceirge.Models.DB;
 using StandUpConceirge.Models;
+using static StandUpConceirge.Models.ScheduleViewModel;
 
 namespace WebApplication1.Controllers
 {
@@ -20,9 +21,19 @@ namespace WebApplication1.Controllers
         }
 
         // GET: BotSchedules
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.BotSchedule.ToListAsync());
+            var respondentsList = _context.BotUsers.ToList();
+            var dropdownRespondentsList = new List<SelectListItem>();
+            foreach (var respondents in respondentsList)
+            {
+                dropdownRespondentsList.Add(new SelectListItem { Value = respondents.Id.ToString(), Text = respondents.Name.ToString() });
+            }
+            ViewBag.RespondentsList = dropdownRespondentsList;
+
+            //return View(await _context.BotSchedule.ToListAsync());
+            return View();
         }
 
         // GET: BotSchedules/Details/5
@@ -153,6 +164,13 @@ namespace WebApplication1.Controllers
         // GET: BotSchedules/Create
         public IActionResult Scheduling()
         {
+            var respondentsList = _context.BotUsers.ToList();
+            var dropdownRespondentsList = new List<SelectListItem>();
+            foreach (var users in respondentsList)
+            {
+                dropdownRespondentsList.Add(new SelectListItem { Value = users.Name.ToString(), Text = users.Name.ToString() });
+            }
+            ViewBag.respondentsList = dropdownRespondentsList;
             return View();
         }
 
@@ -175,6 +193,7 @@ namespace WebApplication1.Controllers
         // GET: BotSchedules/Create
         public IActionResult Create()
         {
+            
             return View();
         }
 
@@ -187,30 +206,46 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
+                var schedID = _context.BotSchedule.ToList().Count();
+                for (int j = 0; j < ScheduleViewModel.Respondents.Length; j++)
+                {
+                    BotSchedule sched = new BotSchedule();
+                    sched.Id = ScheduleViewModel.ID;
+                    sched.StartDay = ScheduleViewModel.StartDay;
+                    sched.TimeOccur = ScheduleViewModel.TimeOccur;
 
-                BotSchedule sched = new BotSchedule();
-                sched.Id = ScheduleViewModel.ID;
-                sched.StartDay = ScheduleViewModel.StartDay;
-                sched.TimeOccur = ScheduleViewModel.TimeOccur;
-                sched.DayOccur = ScheduleViewModel.DayOccur;
-                sched.FrequencyOccur = ScheduleViewModel.FrequencyOccur;
-                sched.Respondents = ScheduleViewModel.Respondents;
+                    sched.Monday = ScheduleViewModel.Monday.ToString().Substring(0, 1);
+                    sched.Tuesday = ScheduleViewModel.Tuesday.ToString().Substring(0, 1);
+                    sched.Wednesday = ScheduleViewModel.Monday.ToString().Substring(0, 1);
+                    sched.Thursday = ScheduleViewModel.Thursday.ToString().Substring(0, 1);
+                    sched.Friday = ScheduleViewModel.Friday.ToString().Substring(0, 1);
+                    sched.Saturday = ScheduleViewModel.Saturday.ToString().Substring(0, 1);
+                    sched.Sunday = ScheduleViewModel.Sunday.ToString().Substring(0, 1);
 
-                sched.WelcomeMsg = ScheduleViewModel.WelcomeMsg;
+                    sched.Creator = "Chris";
+                    sched.ScheduleId = schedID;
 
+                    sched.FrequencyOccur = ScheduleViewModel.FrequencyOccur;
+                    sched.WelcomeMsg = ScheduleViewModel.WelcomeMsg;
+                    sched.Respondents = ScheduleViewModel.Respondents[j];
 
-                _context.Add(sched);
-
-                var SurveyId = _context.BotSchedule.ToList().LastOrDefault();
+                    _context.Add(sched);
+                    await _context.SaveChangesAsync();
+                }
 
                 for (int i = 0; i < ScheduleViewModel.Question.Length; i++)
                 {
+
                     BotQuestions quest = new BotQuestions();
-                    quest.BotScheduleId = sched.Id;
+                    quest.BotScheduleId = schedID;
                     quest.Question = ScheduleViewModel.Question[i];
                     _context.Add(quest);
                     await _context.SaveChangesAsync();
                 }
+
+                //var SurveyId = _context.BotSchedule.ToList().LastOrDefault();
+
+
 
                 return RedirectToAction(nameof(Scheduling));
             }
