@@ -51,26 +51,54 @@ namespace StandUpConceirge.Models.DB
             {
                 entity.ToTable("botQuestions");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.BotScheduleId).HasColumnName("botScheduleID");
+                entity.Property(e => e.Questions)
+                    .HasColumnName("questions")
+                    .HasColumnType("text");
 
-                entity.Property(e => e.Question).HasColumnType("text");
+                entity.Property(e => e.ScheduleId).HasColumnName("scheduleId");
             });
 
             modelBuilder.Entity<BotSchedule>(entity =>
             {
                 entity.ToTable("botSchedule");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.DayOccur).HasColumnType("text");
+                entity.Property(e => e.Creator).HasColumnType("text");
 
-                entity.Property(e => e.FrequencyOccur).HasColumnType("text");
+                entity.Property(e => e.Date)
+                    .HasColumnName("date")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.Day)
+                    .HasColumnName("day")
+                    .HasColumnType("text");
+
+                entity.Property(e => e.Frequency)
+                    .HasColumnName("frequency")
+                    .HasColumnType("text");
+
+                entity.Property(e => e.Friday).HasColumnType("text");
+
+                entity.Property(e => e.Monday).HasColumnType("text");
 
                 entity.Property(e => e.Respondents).HasColumnType("text");
 
-                entity.Property(e => e.StartDay).HasColumnType("date");
+                entity.Property(e => e.Saturday).HasColumnType("text");
+
+                entity.Property(e => e.ScheduleId).HasColumnName("scheduleId");
+
+                entity.Property(e => e.Sunday).HasColumnType("text");
+
+                entity.Property(e => e.Thursday).HasColumnType("text");
+
+                entity.Property(e => e.Time).HasColumnName("time");
+
+                entity.Property(e => e.Tuesday).HasColumnType("text");
+
+                entity.Property(e => e.Wednesday).HasColumnType("text");
 
                 entity.Property(e => e.WelcomeMsg).HasColumnType("text");
             });
