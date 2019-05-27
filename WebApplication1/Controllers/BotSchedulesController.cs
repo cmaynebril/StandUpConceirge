@@ -211,8 +211,8 @@ namespace WebApplication1.Controllers
                 {
                     BotSchedule sched = new BotSchedule();
                     sched.Id = ScheduleViewModel.ID;
-                    sched.StartDay = ScheduleViewModel.StartDay;
-                    sched.TimeOccur = ScheduleViewModel.TimeOccur;
+                    sched.Date = ScheduleViewModel.StartDay;
+                    sched.Time = ScheduleViewModel.TimeOccur;
 
                     sched.Monday = ScheduleViewModel.Monday.ToString().Substring(0, 1);
                     sched.Tuesday = ScheduleViewModel.Tuesday.ToString().Substring(0, 1);
@@ -225,7 +225,7 @@ namespace WebApplication1.Controllers
                     sched.Creator = "Chris";
                     sched.ScheduleId = schedID;
 
-                    sched.FrequencyOccur = ScheduleViewModel.FrequencyOccur;
+                    sched.Frequency = ScheduleViewModel.FrequencyOccur;
                     sched.WelcomeMsg = ScheduleViewModel.WelcomeMsg;
                     sched.Respondents = ScheduleViewModel.Respondents[j];
 
@@ -237,8 +237,8 @@ namespace WebApplication1.Controllers
                 {
 
                     BotQuestions quest = new BotQuestions();
-                    quest.BotScheduleId = schedID;
-                    quest.Question = ScheduleViewModel.Question[i];
+                    quest.ScheduleId = schedID;
+                    quest.Questions = ScheduleViewModel.Question[i];
                     _context.Add(quest);
                     await _context.SaveChangesAsync();
                 }
